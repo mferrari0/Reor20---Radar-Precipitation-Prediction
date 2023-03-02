@@ -44,11 +44,23 @@ The company provided the following data:
 - rain gauge measurements: name of rain gauge, date and measurement (in mm of rain)
 - radar measurements: name of watershed, date and average measurement over the watershed (in mm of rain)
 
+NOTE: the radar measurements span timewisefrom 2010 to 2021.
+
 ## Method
 
-###Exploratory Data Analysis
-At first we performed an exploratory data analysis. To get a feeling of the spacial correlation between the rain gauges  and the radat data measurements, I plotted the map of the US with both for two particular days.
+### Exploratory Data Analysis 
 
+At first we performed an exploratory data analysis. To get a feeling of the spacial correlation between the rain gauges and the radat data measurements, I plotted the map of the US with both for two particular days. Below a snipped of the 1st of April 2015 is provided.
+
+<img src="https://raw.githubusercontent.com/mferrari0/Reor20---Radar-Precipitation-Prediction/main/Images/screenshot%202%20second%20of%20april%202015%20-%201.PNG">
+
+We then proceeded to spacially visualize which the watersheds had a higher correlation between rain gauges and radar measurement by calculating the mean average difference between rain gauge and radar measurement over the whole time span (2010-2021). 
+
+![My Image](Images/average_difference.PNG)
+
+There was a clear difference between the plains and the more elevated regions of the US. However, if we divide each average difference by the amount of precipitation, we don't notice any clear separation between regions of the US: the more it rains, the lower the correlation between rain and radar measurement.
+
+![My Image](Images/average_difference.PNG)
 
 
 
