@@ -77,14 +77,38 @@ There was a clear difference between the plains and the more elevated regions of
 
 
 We analysed the difference between rain gauge and radar data depending on different variable (i.e. altitude of the rain gauge, altitude of the catchment, distance of the rain gauge to the center of the catchment etc). 
-This is available in the EDA folder.
+The notebook is available [here](Reor20---Radar-Precipitation-Prediction/EDA/Eda.ipynb).
 
 ### Models
 
-I tested the perfomance of two different models:
+From the model it was clear that the rain gauge measurement, even though not perfectly correlated, is the most important feature for the predictive model.
+
+I tested the perfomance of two different models that I called:
 
 - all rain gauge model
 - aggregated statistics model
 
-all rain gauge model
+The **all rain gauges model** considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
+
+*   all of the rain gauge measurements of the area
+*   the distance of every rain gauge to the center of the catchment the model is predicting on
+*   aggregated statistics of the rain gauge measurements regarding the catchment the model is predicting on
+
+*Why would I consider the rain gauges outside a catchment to predict the precipitation inside the catchment?*
+
+It happens sometimes that the rain gauges data and the radar data are not correlated. This can be caused by the fact the precipitation is localized in other parts of the catchment where no rain gauge was present. 
+By considering the rain gauges of the entire 2x2 area, I was hoping for the model to learn the general pattern of a precipitation and increase the prediction score.
+
+
+The **aggregated statistics** model also considers one 2x2 (latitude and longitude units) area and, for each day, computes some aggregated statistics of the rain gauge measurements about the catchment the model is predicting on and the whole 2x2 area. As aggregated statistics I used: 
+*   Minimum
+*   Maximum
+*   Mean
+*   Median
+*   Quantiles (every 10%)
+
+Multiple 2x2 areas have been considered. Every area's dataframe was concatenated into a unique one, obtaining a dataframe with 2M rows. 
+The final score was not impressive: around 0.30 R2.
+
+
 
