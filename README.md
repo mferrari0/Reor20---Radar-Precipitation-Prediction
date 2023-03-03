@@ -89,7 +89,7 @@ I tested the perfomance of two different models that I called:
 - all rain gauge model
 - aggregated statistics model
 
-The [all rain gauges model](/Models/All rain gauges model/) considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
+The [all rain gauges model](Reor20---Radar-Precipitation-Prediction/Models/All rain gauges model) considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
 
 *   all of the rain gauge measurements of the area
 *   the distance of every rain gauge to the center of the catchment the model is predicting on
