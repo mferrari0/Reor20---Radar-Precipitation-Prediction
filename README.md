@@ -18,6 +18,7 @@ The objective of this project was to create a ML model that can accurately predi
 - geojson
 - plotly, seaborn, matplotlib
 - Pandas, numpy, google colab
+- KNN classifier
 - XgBoost
 - Snowflake
 
