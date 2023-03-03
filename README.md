@@ -89,7 +89,7 @@ I tested the perfomance of two different models that I called:
 - all rain gauge model
 - aggregated statistics model
 
-The **all rain gauges model** considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
+The *all rain gauges model* in the [Models folder](/Models) considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
 
 *   all of the rain gauge measurements of the area
 *   the distance of every rain gauge to the center of the catchment the model is predicting on
@@ -97,11 +97,13 @@ The **all rain gauges model** considers one 2x2 (latitude and longitude units) a
 
 *Why would I consider the rain gauges outside a catchment to predict the precipitation inside the catchment?*
 
-It happens sometimes that the rain gauges data and the radar data are not correlated. This can be caused by the fact the precipitation is localized in other parts of the catchment where no rain gauge was present. 
-By considering the rain gauges of the entire 2x2 area, I was hoping for the model to learn the general pattern of a precipitation and increase the prediction score.
+It happens sometimes that the rain gauges data and the radar data are not correlated. This can be caused by the fact the precipitation is localized in parts of the catchment where no rain gauge was present. By considering the rain gauges of the entire 2x2 area, I was hoping for the model to learn the general pattern of a precipitation and increase the prediction score.
+The model was trained on various areas of the US south-east and performs with an average score of around 0.5 R2. To obtain a decent score, a sufficient 
+number of colums and rows needs to be used. Every area has a different number of rows and colums because the number of rain gauges changes and the number of 
+measurement days also changes.
 
 
-The **aggregated statistics** model also considers one 2x2 (latitude and longitude units) area and, for each day, computes some aggregated statistics of the rain gauge measurements about the catchment the model is predicting on and the whole 2x2 area. As aggregated statistics I used: 
+The **aggregated statistics** model in the [Models folder](/Models) also considers one 2x2 (latitude and longitude units) area and, for each day, computes some aggregated statistics of the rain gauge measurements about the catchment the model is predicting on and the whole 2x2 area. As aggregated statistics I used: 
 *   Minimum
 *   Maximum
 *   Mean
