@@ -11,6 +11,17 @@
 
 The objective of this project was to create a ML model that can accurately predict the average rainfall occurring in any watershed of the conterminous United states from rain gauges data.
 
+### Technologies 
+
+- Python
+- SQL
+- geojson
+- plotly, seaborn, matplotlib
+- Pandas, numpy, google colab
+- XgBoost
+- Snowflake
+
+
 ## Introduction
 
 **What is a watershed?**
@@ -44,23 +55,61 @@ The company provided the following data:
 - rain gauge measurements: name of rain gauge, date and measurement (in mm of rain)
 - radar measurements: name of watershed, date and average measurement over the watershed (in mm of rain)
 
-NOTE: the radar measurements span timewisefrom 2010 to 2021.
+NOTE: the radar measurements span timewise from 2010 to 2021.
 
 ## Method
 
 ### Exploratory Data Analysis 
 
-At first we performed an exploratory data analysis. To get a feeling of the spacial correlation between the rain gauges and the radat data measurements, I plotted the map of the US with both for two particular days. Below a snipped of the 1st of April 2015 is provided.
+At first we performed an exploratory data analysis. To get a feeling of the spacial correlation between the rain gauges and the radat data measurements, I plotted the map of the US with both for two particular days. Below a snipped of the 1st of April 2015 is provided. The color of the watersheds represents the radar data (target) and the color of the points represent the rain gauges measurements.
 
-<img src="https://raw.githubusercontent.com/mferrari0/Reor20---Radar-Precipitation-Prediction/main/Images/screenshot%202%20second%20of%20april%202015%20-%201.PNG">
+<img src="Images/screenshots/screenshot_2_second_of_april_2015-1.PNG" height="300" width="600" >
+
 
 We then proceeded to spacially visualize which the watersheds had a higher correlation between rain gauges and radar measurement by calculating the mean average difference between rain gauge and radar measurement over the whole time span (2010-2021). 
 
-![My Image](Images/average_difference.PNG)
+<img src="Images/screenshots/average_difference.PNG" height="300" width="600" >
+
 
 There was a clear difference between the plains and the more elevated regions of the US. However, if we divide each average difference by the amount of precipitation, we don't notice any clear separation between regions of the US: the more it rains, the lower the correlation between rain and radar measurement.
 
-![My Image](Images/average_difference.PNG)
+<img src="Images/screenshots/relative_average_difference.PNG" height="300" width="600" >
+
+All of the html maps are available in the [Images section](/Images).
+
+We analysed the difference between rain gauge and radar data depending on different variable (i.e. altitude of the rain gauge, altitude of the catchment, distance of the rain gauge to the center of the catchment etc). 
+The notebook is available [here](/EDA).
+
+### Models
+
+From the model it was clear that the rain gauge measurement, even though not perfectly correlated, is the most important feature for the predictive model.
+
+I tested the perfomance of two different models that I called:
+
+- all rain gauge model
+- aggregated statistics model
+
+The **all rain gauges model** considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
+
+*   all of the rain gauge measurements of the area
+*   the distance of every rain gauge to the center of the catchment the model is predicting on
+*   aggregated statistics of the rain gauge measurements regarding the catchment the model is predicting on
+
+*Why would I consider the rain gauges outside a catchment to predict the precipitation inside the catchment?*
+
+It happens sometimes that the rain gauges data and the radar data are not correlated. This can be caused by the fact the precipitation is localized in other parts of the catchment where no rain gauge was present. 
+By considering the rain gauges of the entire 2x2 area, I was hoping for the model to learn the general pattern of a precipitation and increase the prediction score.
+
+
+The **aggregated statistics** model also considers one 2x2 (latitude and longitude units) area and, for each day, computes some aggregated statistics of the rain gauge measurements about the catchment the model is predicting on and the whole 2x2 area. As aggregated statistics I used: 
+*   Minimum
+*   Maximum
+*   Mean
+*   Median
+*   Quantiles (every 10%)
+
+Multiple 2x2 areas have been considered. Every area's dataframe was concatenated into a unique one, obtaining a dataframe with 2M rows. 
+The final score was not impressive: around 0.30 R2.
 
 
 
