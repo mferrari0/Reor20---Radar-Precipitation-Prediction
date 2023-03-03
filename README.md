@@ -89,7 +89,7 @@ I tested the perfomance of two different models that I called:
 - all rain gauge model
 - aggregated statistics model
 
-The **all rain gauges model** considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
+The [all rain gauges model](/Models/All rain gauges model/) considers one 2x2 (latitude and longitude units) area and, to predict the radar data inside a certain catchment, uses the following features:
 
 *   all of the rain gauge measurements of the area
 *   the distance of every rain gauge to the center of the catchment the model is predicting on
@@ -97,7 +97,7 @@ The **all rain gauges model** considers one 2x2 (latitude and longitude units) a
 
 *Why would I consider the rain gauges outside a catchment to predict the precipitation inside the catchment?*
 
-It happens sometimes that the rain gauges data and the radar data are not correlated. This can be caused by the fact the precipitation is localized in other parts of the catchment where no rain gauge was present. 
+It happens sometimes that the rain gauges data and the radar data are not correlated. This can be caused by the fact the precipitation is localized in parts of the catchment where no rain gauge was present. 
 By considering the rain gauges of the entire 2x2 area, I was hoping for the model to learn the general pattern of a precipitation and increase the prediction score.
 
 
