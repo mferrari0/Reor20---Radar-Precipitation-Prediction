@@ -55,13 +55,13 @@ The company provided the following data:
 - rain gauge measurements: name of rain gauge, date and measurement (in mm of rain)
 - radar measurements: name of watershed, date and average measurement over the watershed (in mm of rain)
 
-NOTE: the radar measurements span timewisefrom 2010 to 2021.
+NOTE: the radar measurements span timewise from 2010 to 2021.
 
 ## Method
 
 ### Exploratory Data Analysis 
 
-At first we performed an exploratory data analysis. To get a feeling of the spacial correlation between the rain gauges and the radat data measurements, I plotted the map of the US with both for two particular days. Below a snipped of the 1st of April 2015 is provided.
+At first we performed an exploratory data analysis. To get a feeling of the spacial correlation between the rain gauges and the radat data measurements, I plotted the map of the US with both for two particular days. Below a snipped of the 1st of April 2015 is provided. The color of the watersheds represents the radar data (target) and the color of the points represent the rain gauges measurements.
 
 <img src="Images/screenshots/screenshot_2_second_of_april_2015-1.PNG" height="300" width="600" >
 
@@ -75,9 +75,10 @@ There was a clear difference between the plains and the more elevated regions of
 
 <img src="Images/screenshots/relative_average_difference.PNG" height="300" width="600" >
 
+All of the html maps are available in the [Images section](/Images).
 
 We analysed the difference between rain gauge and radar data depending on different variable (i.e. altitude of the rain gauge, altitude of the catchment, distance of the rain gauge to the center of the catchment etc). 
-The notebook is available [here](Reor20---Radar-Precipitation-Prediction/EDA/Eda.ipynb).
+The notebook is available [here](/EDA).
 
 ### Models
 
