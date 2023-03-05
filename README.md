@@ -45,7 +45,7 @@ Rain gauges measure precipitation in a specific point of the watershed (point me
 
 <img src="https://site.extension.uga.edu/climate/files/2015/08/new-radar-precip-map.jpg" height="200" width="300" >
 
-Radar date is considered to be a reliable source for measuring precipitation. It is used by Reor20 for their flood detection model, but it's a relatively new inventiona and its data doesn't go back in time that much, while rain gauges have been aroung for a much longer time.
+Radar date is considered to be a reliable source for measuring precipitation. It is used by Reor20 for their flood detection model, but it's a relatively new invention and its data doesn't go back in time that much, while rain gauges have been aroung for a much longer time.
 
 
 ## Available data
